@@ -1,9 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, Send, GraduationCap, ArrowRight } from 'lucide-react';
+import { Mail, Phone, Send, GraduationCap, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { DATA } from '../data';
 
 const Contact = () => {
+  const [status, setStatus] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    
+    setStatus('sending');
+    
+    try {
+      const response = await fetch(`https://formspree.io/f/mqaejnbz`, { // Note: User needs to replace this with their own ID
+        method: 'POST',
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        setStatus('success');
+        form.reset();
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
+  };
+
   return (
     <section id="contact" className="py-32 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,33 +96,63 @@ const Contact = () => {
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-accent opacity-50" />
             
             <h3 className="text-3xl font-black text-white mb-10">Start a Conversation</h3>
-            <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                <div className="space-y-3">
-                  <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Identity</label>
-                  <input type="text" placeholder="Your Name" className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700" />
+            
+            {status === 'success' ? (
+              <motion.div 
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="py-20 text-center space-y-6"
+              >
+                <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto">
+                  <CheckCircle2 size={48} />
+                </div>
+                <h4 className="text-2xl font-bold text-white">Message Transmitted!</h4>
+                <p className="text-slate-500">I'll review your inquiry and get back to you shortly.</p>
+                <button 
+                  onClick={() => setStatus('')}
+                  className="text-primary font-bold hover:underline"
+                >
+                  Send another message
+                </button>
+              </motion.div>
+            ) : (
+              <form className="space-y-8" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Identity</label>
+                    <input name="name" required type="text" placeholder="Your Name" className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700" />
+                  </div>
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Reach Out At</label>
+                    <input name="email" required type="email" placeholder="Email Address" className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700" />
+                  </div>
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Reach Out At</label>
-                  <input type="email" placeholder="Email Address" className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700" />
+                  <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Objective</label>
+                  <input name="subject" required type="text" placeholder="How can we collaborate?" className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700" />
                 </div>
-              </div>
-              <div className="space-y-3">
-                <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Objective</label>
-                <input type="text" placeholder="How can we collaborate?" className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700" />
-              </div>
-              <div className="space-y-3">
-                <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Details</label>
-                <textarea rows="4" placeholder="Tell me about your project..." className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all resize-none placeholder:text-slate-700"></textarea>
-              </div>
-              <button className="group w-full py-5 bg-white text-slate-950 font-black rounded-2xl hover:bg-primary transition-all flex items-center justify-center gap-3 shadow-xl overflow-hidden relative">
-                <span className="relative z-10 flex items-center gap-3">
-                  Transmit Message
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </span>
-              </button>
-            </form>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Details</label>
+                  <textarea name="message" required rows="4" placeholder="Tell me about your project..." className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all resize-none placeholder:text-slate-700"></textarea>
+                </div>
+                <button 
+                  disabled={status === 'sending'}
+                  className="group w-full py-5 bg-white text-slate-950 font-black rounded-2xl hover:bg-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-xl overflow-hidden relative"
+                >
+                  <span className="relative z-10 flex items-center gap-3">
+                    {status === 'sending' ? 'Transmitting...' : 'Transmit Message'}
+                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </button>
+                {status === 'error' && (
+                  <p className="text-red-400 text-sm text-center font-medium">Something went wrong. Please try again.</p>
+                )}
+              </form>
+            )}
           </motion.div>
+        </div>
+      </div>
+    </section>
         </div>
       </div>
     </section>
