@@ -5,64 +5,41 @@ import { DATA } from '../data';
 import profileImg from '../assets/profile.jpg';
 
 const Hero = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.2 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-  };
-
   return (
-    <section className="relative min-h-[95vh] flex items-center pt-24 pb-16 overflow-hidden cyber-grid">
-      {/* Ambient Background Glows */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 ambient-glow rounded-full" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 ambient-glow rounded-full !bg-secondary" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center lg:items-start pt-10">
+    <section className="relative min-h-[90vh] flex items-center pt-24 pb-16 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center lg:items-start pt-10">
           
           {/* Left Content */}
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="lg:col-span-8 space-y-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-8 z-10"
           >
-            <motion.div variants={itemVariants}>
-              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-primary text-xs font-black tracking-[0.2em] uppercase">
-                <span className="flex h-2.5 w-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_10px_var(--primary)]" />
-                Available for Strategy & Security
-              </div>
-            </motion.div>
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold mb-8">
+              <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
+              Available for Internships & Projects
+            </div>
             
-            <motion.h1 variants={itemVariants} className="text-7xl md:text-9xl font-black mb-8 leading-[0.85] text-white tracking-tighter">
-              Secure<span className="text-primary italic">.</span> <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-white glow-text-primary">Reliable.</span> <br />
-              Resilient<span className="text-secondary italic">.</span>
-            </motion.h1>
+            <h1 className="text-6xl md:text-8xl font-black mb-6 leading-[0.9] text-white">
+              Secure. <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary/50 glow-text-primary">Reliable.</span> <br />
+              Resilient.
+            </h1>
             
-            <motion.p variants={itemVariants} className="text-2xl text-slate-400 mb-12 max-w-2xl leading-relaxed font-light">
-              I'm <span className="text-white font-bold">{DATA.personal.name}</span>. 
-              I design <span className="text-white italic">resilient architectures</span> and 
-              perform <span className="text-white italic">precision security research</span> to protect modern digital frontiers.
-            </motion.p>
+            <p className="text-xl text-slate-400 mb-10 max-w-2xl leading-relaxed font-light">
+              Hi, I'm <span className="text-white font-semibold">{DATA.personal.name}</span>. 
+              I bridge the gap between <span className="text-white italic">development</span> and <span className="text-white italic">security</span>. 
+              As a {DATA.personal.degree} student, I build high-performance applications with security at their core.
+            </p>
 
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-8">
-              <button className="group relative px-10 py-5 bg-white text-slate-950 font-black rounded-2xl hover:bg-primary transition-all duration-500 overflow-hidden shadow-2xl">
-                <span className="relative z-10 flex items-center gap-3">
-                  Initiate Collaboration
-                  <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-500" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+            <div className="flex flex-wrap gap-5">
+              <button className="group px-8 py-4 bg-white text-slate-950 font-bold rounded-2xl hover:bg-primary transition-all flex items-center gap-2 shadow-lg shadow-white/10">
+                Work with me
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>
-
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-4 px-2">
                 {[
                   { name: 'GitHub', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg', href: DATA.personal.github },
                   { name: 'LinkedIn', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg', href: DATA.personal.linkedin },
@@ -73,63 +50,62 @@ const Hero = () => {
                     href={social.href} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/50 hover:bg-white/10 transition-all group scale-100 hover:scale-110 active:scale-95"
+                    className="p-3 rounded-xl border border-white/5 hover:border-primary/50 hover:bg-white/5 transition-all group"
                   >
                     <img 
                       src={social.logo} 
                       alt={social.name} 
-                      className="w-7 h-7 brightness-0 invert opacity-60 group-hover:opacity-100 transition-all grayscale group-hover:grayscale-0" 
+                      className="w-6 h-6 brightness-0 invert opacity-80 group-hover:opacity-100 transition-all" 
                     />
                   </a>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div variants={itemVariants} className="pt-12 border-t border-white/10 grid grid-cols-3 gap-12">
-              {[
-                { val: '6+', label: 'Internships' },
-                { val: '15+', label: 'Security Tools' },
-                { val: '2nd', label: 'IT Utsav \'25' }
-              ].map((stat, idx) => (
-                <div key={idx} className="group cursor-default">
-                  <p className="text-4xl font-black text-white group-hover:text-primary transition-colors">{stat.val}</p>
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600 mt-2">{stat.label}</p>
-                </div>
-              ))}
-            </motion.div>
+            <div className="mt-16 pt-8 border-t border-white/5 grid grid-cols-3 gap-8">
+              <div>
+                <p className="text-3xl font-black text-white">6+</p>
+                <p className="text-xs uppercase tracking-widest text-slate-500 mt-1">Internships</p>
+              </div>
+              <div>
+                <p className="text-3xl font-black text-white">15+</p>
+                <p className="text-xs uppercase tracking-widest text-slate-500 mt-1">Tools</p>
+              </div>
+              <div>
+                <p className="text-3xl font-black text-white">2nd</p>
+                <p className="text-xs uppercase tracking-widest text-slate-500 mt-1">IT Utsav '25</p>
+              </div>
+            </div>
           </motion.div>
 
           {/* Right Content - Real Photo */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
             className="lg:col-span-4 relative lg:ml-auto"
           >
-            <div className="relative aspect-[4/5] md:aspect-square">
-              {/* Complex decorative elements */}
-              <div className="absolute -inset-10 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] border border-white/5 rounded-full border-dashed animate-[spin_40s_linear_infinite]" />
+            <div className="relative aspect-square">
+              {/* Decorative shapes */}
+              <div className="absolute -inset-4 bg-primary/10 rounded-[3rem] blur-2xl animate-pulse" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-primary/10 rounded-full border-dashed animate-[spin_25s_linear_infinite]" />
               
-              <div className="relative h-full w-full rounded-[4rem] overflow-hidden border-2 border-white/10 bg-slate-950 group shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+              <div className="relative h-full w-full rounded-[3.5rem] overflow-hidden border-2 border-white/10 bg-slate-900 group shadow-2xl">
                 <img 
                   src={profileImg} 
                   alt={DATA.personal.name} 
-                  className="w-full h-full object-cover grayscale-[30%] brightness-90 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 group-hover:scale-110"
+                  className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
                 />
                 
-                {/* Floating "Scanning" effect */}
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-transparent h-1 w-full animate-[scan_3s_ease-in-out_infinite]" />
-
                 {/* Overlay Card */}
-                <div className="absolute bottom-8 left-8 right-8 premium-blur p-6 rounded-[2.5rem] border-white/20 shadow-2xl scale-100 group-hover:scale-105 transition-transform duration-500">
+                <div className="absolute bottom-6 left-6 right-6 premium-blur p-5 rounded-3xl border-white/20 shadow-2xl">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-white font-black text-xl leading-none tracking-tight">Lead Strategist</p>
-                      <p className="text-[10px] text-primary mt-2 font-black tracking-[0.3em] uppercase">Security Research</p>
+                      <p className="text-white font-extrabold text-lg leading-none">Security Analyst</p>
+                      <p className="text-[10px] text-primary/90 mt-2 font-black tracking-[0.2em] uppercase">VAPT Specialist</p>
                     </div>
-                    <div className="h-12 w-12 rounded-2xl bg-white text-slate-950 flex items-center justify-center group-hover:bg-primary transition-colors">
-                      <Lock size={24} />
+                    <div className="h-10 w-10 rounded-2xl bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-slate-950 transition-all">
+                      <Lock size={20} />
                     </div>
                   </div>
                 </div>
@@ -137,20 +113,20 @@ const Hero = () => {
 
               {/* Floating Badges */}
               <motion.div 
-                animate={{ y: [0, -15, 0], x: [0, 5, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-8 -right-8 premium-blur py-5 px-8 rounded-[2.5rem] flex items-center gap-4 border-white/20 shadow-2xl z-20"
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-6 -right-6 premium-blur py-4 px-6 rounded-[2rem] flex items-center gap-3 border-white/20 shadow-2xl z-20"
               >
-                <div className="w-3 h-3 rounded-full bg-secondary shadow-[0_0_15px_var(--secondary)] animate-pulse" />
-                <span className="text-[10px] font-black text-white tracking-[0.4em] uppercase">ACTIVE</span>
+                <div className="w-2.5 h-2.5 rounded-full bg-secondary shadow-[0_0_12px_var(--secondary)] animate-pulse" />
+                <span className="text-[10px] font-black text-white tracking-[0.3em] uppercase">ACTIVE</span>
               </motion.div>
 
               <motion.div 
-                animate={{ y: [15, 0, 15], rotate: [0, 10, 0] }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute -bottom-8 -left-8 premium-blur p-6 rounded-[2.5rem] flex items-center gap-3 border-white/20 shadow-2xl z-20 cursor-help group/cpu"
+                animate={{ y: [12, 0, 12] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute -bottom-6 -left-6 premium-blur p-5 rounded-[2rem] flex items-center gap-3 border-white/20 shadow-2xl z-20 cursor-help group/cpu"
               >
-                <Cpu className="text-primary group-hover/cpu:scale-125 transition-transform duration-500" size={32} />
+                <Cpu className="text-primary group-hover/cpu:rotate-90 transition-transform duration-500" size={28} />
               </motion.div>
             </div>
           </motion.div>
