@@ -118,7 +118,7 @@ const Hero = () => {
                 className="absolute -top-6 -right-6 premium-blur py-4 px-6 rounded-[2rem] flex items-center gap-3 border-white/20 shadow-2xl z-20"
               >
                 <div className="w-2.5 h-2.5 rounded-full bg-secondary shadow-[0_0_12px_var(--secondary)] animate-pulse" />
-                <span className="text-[10px] font-black text-white tracking-[0.3em] uppercase">VAPT_ANALYST</span>
+                <span className="text-[10px] font-black text-white tracking-[0.3em] uppercase">ACTIVE</span>
               </motion.div>
 
               <motion.div 
