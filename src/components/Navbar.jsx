@@ -30,7 +30,7 @@ const Navbar = () => {
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                 <Shield size={22} fill="currentColor" fillOpacity={0.2} />
               </div>
-              <span className="text-xl font-black tracking-tight text-white">Tanisha<span className="text-primary italic">.</span></span>
+              <span className="text-xl font-black tracking-tight text-white">Tanisha <span className="text-primary italic">Gupta</span></span>
             </div>
 
             {/* Desktop Menu */}
