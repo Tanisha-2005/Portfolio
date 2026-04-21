@@ -30,9 +30,8 @@ I am a dedicated **VAPT Analyst** with a parallel expertise in **Frontend Develo
 - **Domains**: VAPT, Bug Bounty Hunting, Penetration Testing, Network Security
 
 ### 🌐 Development
-- **Frontend**: React, JavaScript, HTML5, CSS3, Tailwind CSS
+- **Frontend**: JavaScript, HTML5, CSS
 - **Backend/Scripting**: Node.js, C, C++
-- **Animations**: Framer Motion
 
 ---
 
