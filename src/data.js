@@ -54,7 +54,7 @@ export const DATA = {
     {
       role: "Web Developer Intern",
       company: "Innobytes",
-      period: "July 2024 – August 2024",
+      period: "July 2025 – August 2025",
       location: "New Delhi",
       type: "Web Foundations",
       description: "Developed and maintained responsive web components, ensuring compatibility and optimized performance across modern browsers."
