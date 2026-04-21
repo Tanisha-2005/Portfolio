@@ -6,31 +6,26 @@ import { DATA } from '../data';
 const Contact = () => {
   const [status, setStatus] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    const data = new FormData(form);
+    const formData = new FormData(form);
     
     setStatus('sending');
     
-    try {
-      const response = await fetch(`https://formspree.io/f/mjgjepwa`, { // Using the user's specific ID
-        method: 'POST',
-        body: data,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-      
-      if (response.ok) {
-        setStatus('success');
-        form.reset();
-      } else {
-        setStatus('error');
-      }
-    } catch (error) {
-      setStatus('error');
-    }
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const subject = formData.get('subject');
+    const message = formData.get('message');
+    
+    // Construct the mailto link
+    const mailtoLink = `mailto:${DATA.personal.email}?subject=${encodeURIComponent(`[Portfolio Project] ${subject}`)}&body=${encodeURIComponent(`Identity: ${name}\nReach Out At: ${email}\n\nDetails:\n${message}`)}`;
+    
+    // Trigger the email app
+    window.location.href = mailtoLink;
+    
+    setStatus('success');
+    form.reset();
   };
 
   return (
