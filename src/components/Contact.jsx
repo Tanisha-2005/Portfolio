@@ -95,7 +95,7 @@ const Contact = () => {
           >
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-accent opacity-50" />
             
-            <h3 className="text-3xl font-black text-white mb-10 text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">Let's start a project together</h3>
+            <h3 className="text-3xl font-black text-white mb-10">Start a Conversation</h3>
             
             {status === 'success' ? (
               <motion.div 
@@ -106,8 +106,8 @@ const Contact = () => {
                 <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto">
                   <CheckCircle2 size={48} />
                 </div>
-                <h4 className="text-2xl font-bold text-white">Message Received!</h4>
-                <p className="text-slate-500">Thanks for reaching out, Tanisha will get back to you shortly.</p>
+                <h4 className="text-2xl font-bold text-white">Message Transmitted!</h4>
+                <p className="text-slate-500">I'll review your inquiry and get back to you shortly.</p>
                 <button 
                   onClick={() => setStatus('')}
                   className="text-primary font-bold hover:underline"
@@ -119,28 +119,29 @@ const Contact = () => {
               <form className="space-y-8" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Full Name</label>
-                    <input name="name" required type="text" placeholder="e.g. John Doe" className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700" />
+                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Identity</label>
+                    <input name="name" required type="text" placeholder="Your Name" className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700" />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Email Address</label>
-                    <input name="email" required type="email" placeholder="name@company.com" className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700" />
+                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Reach Out At</label>
+                    <input name="email" required type="email" placeholder="Email Address" className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700" />
                   </div>
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">What can I help you with?</label>
-                  <input name="subject" required type="text" placeholder="Consultancy, Project, or just a Hi" className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700" />
+                  <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Objective</label>
+                  <input name="subject" required type="text" placeholder="How can we collaborate?" className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700" />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Tell me about your project</label>
-                  <textarea name="message" required rows="4" placeholder="Briefly describe what you're looking for..." className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all resize-none placeholder:text-slate-700"></textarea>
+                  <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Details</label>
+                  <textarea name="message" required rows="4" placeholder="Tell me about your project..." className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all resize-none placeholder:text-slate-700"></textarea>
                 </div>
                 <button 
+                  type="submit"
                   disabled={status === 'sending'}
-                  className="group w-full py-5 bg-primary text-slate-950 font-black rounded-2xl hover:bg-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-xl overflow-hidden relative"
+                  className="group w-full py-5 bg-white text-slate-950 font-black rounded-2xl hover:bg-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-xl overflow-hidden relative"
                 >
                   <span className="relative z-10 flex items-center gap-3">
-                    {status === 'sending' ? 'Transmitting...' : 'Send Message'}
+                    {status === 'sending' ? 'Transmitting...' : 'Transmit Message'}
                     <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                   </span>
                 </button>
@@ -150,9 +151,6 @@ const Contact = () => {
               </form>
             )}
           </motion.div>
-        </div>
-      </div>
-    </section>
         </div>
       </div>
     </section>
