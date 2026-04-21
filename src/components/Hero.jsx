@@ -90,21 +90,21 @@ const Hero = () => {
               <div className="absolute -inset-4 bg-primary/10 rounded-[3rem] blur-2xl animate-pulse" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-primary/10 rounded-full border-dashed animate-[spin_25s_linear_infinite]" />
               
-              <div className="relative h-full w-full rounded-[2.5rem] overflow-hidden gradient-border bg-slate-900 group">
+              <div className="relative h-full w-full rounded-[3.5rem] overflow-hidden border-2 border-white/10 bg-slate-900 group shadow-2xl">
                 <img 
                   src={profileImg} 
                   alt={DATA.personal.name} 
-                  className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
                 />
                 
                 {/* Overlay Card */}
-                <div className="absolute bottom-6 left-6 right-6 premium-blur p-5 rounded-2xl border-white/10">
+                <div className="absolute bottom-6 left-6 right-6 premium-blur p-5 rounded-3xl border-white/20 shadow-2xl">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-white font-bold text-lg leading-none">VAPT Experience</p>
-                      <p className="text-xs text-primary/80 mt-1 font-medium tracking-wide uppercase">Cybersecurity graduate</p>
+                      <p className="text-white font-extrabold text-lg leading-none">Security Analyst</p>
+                      <p className="text-[10px] text-primary/90 mt-2 font-black tracking-[0.2em] uppercase">VAPT Specialist</p>
                     </div>
-                    <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                    <div className="h-10 w-10 rounded-2xl bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-slate-950 transition-all">
                       <Lock size={20} />
                     </div>
                   </div>
@@ -113,20 +113,20 @@ const Hero = () => {
 
               {/* Floating Badges */}
               <motion.div 
-                animate={{ y: [0, -10, 0] }}
+                animate={{ y: [0, -12, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -right-4 premium-blur py-3 px-5 rounded-2xl flex items-center gap-3 border-white/10 shadow-2xl"
+                className="absolute -top-6 -right-6 premium-blur py-4 px-6 rounded-[2rem] flex items-center gap-3 border-white/20 shadow-2xl z-20"
               >
-                <div className="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_var(--secondary)]" />
-                <span className="text-xs font-bold text-white tracking-wider">SEC_OP_ACTIVE</span>
+                <div className="w-2.5 h-2.5 rounded-full bg-secondary shadow-[0_0_12px_var(--secondary)] animate-pulse" />
+                <span className="text-[10px] font-black text-white tracking-[0.3em] uppercase">VAPT_ANALYST</span>
               </motion.div>
 
               <motion.div 
-                animate={{ y: [10, 0, 10] }}
+                animate={{ y: [12, 0, 12] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute -bottom-4 -left-4 premium-blur p-4 rounded-2xl flex items-center gap-3 border-white/10 shadow-2xl"
+                className="absolute -bottom-6 -left-6 premium-blur p-5 rounded-[2rem] flex items-center gap-3 border-white/20 shadow-2xl z-20 cursor-help group/cpu"
               >
-                <Cpu className="text-primary" size={24} />
+                <Cpu className="text-primary group-hover/cpu:rotate-90 transition-transform duration-500" size={28} />
               </motion.div>
             </div>
           </motion.div>
