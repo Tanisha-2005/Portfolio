@@ -11,7 +11,6 @@ I am a dedicated **VAPT Analyst** with a parallel expertise in **Frontend Develo
 - 📍 Based in **Alwar, Rajasthan**
 - 🎓 **BCA (Cybersecurity)** from Uttaranchal University
 - 🛡️ Specialized in **Vulnerability Assessment & Penetration Testing**
-- 💻 Passionate about **React**, **Tailwind CSS**, and **Framer Motion**
 
 ---
 
