@@ -14,7 +14,7 @@ const Contact = () => {
     setStatus('sending');
     
     try {
-      const response = await fetch(`https://formspree.io/f/mqaejnbz`, { // Note: User needs to replace this with their own ID
+      const response = await fetch(`https://formspree.io/f/mjgjepwa`, { // Using the user's specific ID
         method: 'POST',
         body: data,
         headers: {
