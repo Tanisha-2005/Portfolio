@@ -58,6 +58,14 @@ export const DATA = {
       location: "New Delhi",
       type: "Web Foundations",
       description: "Developed and maintained responsive web components, ensuring compatibility and optimized performance across modern browsers."
+    },
+    {
+      role: "C & C++ Programming Trainee",
+      company: "Internshala",
+      period: "May 2024 – July 2024",
+      location: "Remote",
+      type: "Programming Training",
+      description: "Completed an intensive training program in C and C++ programming, mastering core programming logic, memory management, and data structures to build a strong foundation for software development."
     }
   ],
   projects: [
