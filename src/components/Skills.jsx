@@ -24,7 +24,7 @@ const Skills = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-20">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            Technical <span className="text-primary italic">Arsenal</span>
+            Technical <span className="text-primary italic">Skillset</span>
           </h2>
           <p className="text-xl text-slate-500 font-light max-w-2xl">
             My specialized toolset—honed through rigorous study and practical application across cybersecurity and full-stack development.
