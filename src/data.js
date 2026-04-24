@@ -4,7 +4,6 @@ export const DATA = {
     degree: "BCA (Cybersecurity)",
     location: "Alwar, Rajasthan",
     email: "guptajitannu555@gmail.com",
-    phone: "8955417726",
     github: "https://github.com/Tanisha-2005",
     linkedin: "https://linkedin.com/in/tanisha-gupta-81b004292",
     tryhackme: "https://tryhackme.com/p/Tanishagupta",

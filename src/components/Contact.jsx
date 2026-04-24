@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, Send, GraduationCap, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Mail, Send, GraduationCap, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { DATA } from '../data';
 
 const Contact = () => {
@@ -57,15 +57,7 @@ const Contact = () => {
                 </div>
               </a>
               
-              <a href={`tel:${DATA.personal.phone}`} className="flex items-center gap-6 p-8 premium-blur border-white/5 hover:border-secondary/30 transition-all rounded-[2rem] group">
-                <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
-                  <Phone size={32} />
-                </div>
-                <div>
-                  <p className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-1">Direct Line</p>
-                  <p className="text-xl font-bold text-white group-hover:text-secondary transition-colors">{DATA.personal.phone}</p>
-                </div>
-              </a>
+
             </div>
 
             <div className="pt-10 border-t border-white/5">
