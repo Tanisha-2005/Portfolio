@@ -35,10 +35,10 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-wrap gap-5">
-              <button className="group px-8 py-4 bg-white text-slate-950 font-bold rounded-2xl hover:bg-primary transition-all flex items-center gap-2 shadow-lg shadow-white/10">
+              <a href="#contact" className="group px-8 py-4 bg-white text-slate-950 font-bold rounded-2xl hover:bg-primary transition-all flex items-center gap-2 shadow-lg shadow-white/10">
                 Work with me
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              </a>
               <div className="flex items-center gap-4 px-2">
                 {[
                   { name: 'GitHub', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg', href: DATA.personal.github },

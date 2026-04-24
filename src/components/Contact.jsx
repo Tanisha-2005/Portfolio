@@ -60,22 +60,7 @@ const Contact = () => {
 
             </div>
 
-            <div className="pt-10 border-t border-white/5">
-              <h3 className="text-xs font-black text-slate-600 uppercase tracking-[0.2em] mb-8">Academic Foundation</h3>
-              <div className="space-y-8">
-                {DATA.education.map((edu, index) => (
-                  <div key={index} className="flex gap-6 items-start group">
-                    <div className="mt-1 w-12 h-12 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-primary/40 group-hover:text-primary transition-colors">
-                      <GraduationCap size={24} />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold text-white mb-1">{edu.degree}</h4>
-                      <p className="text-sm text-slate-500 font-medium">{edu.school} — {edu.period}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+
           </div>
 
           <motion.div 
