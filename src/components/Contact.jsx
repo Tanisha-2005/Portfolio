@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Send, GraduationCap, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Mail, Send, GraduationCap, ArrowRight, CheckCircle2, User, FileDown } from 'lucide-react';
 import { DATA } from '../data';
 
 const Contact = () => {
@@ -47,6 +47,16 @@ const Contact = () => {
             </p>
 
             <div className="space-y-6 mb-16">
+              <div className="flex items-center gap-6 p-8 premium-blur border-white/5 rounded-[2rem] group">
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                  <User size={32} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-1">Full Name</p>
+                  <p className="text-xl font-bold text-white">{DATA.personal.name}</p>
+                </div>
+              </div>
+
               <a href={`mailto:${DATA.personal.email}`} className="flex items-center gap-6 p-8 premium-blur border-white/5 hover:border-primary/30 transition-all rounded-[2rem] group">
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                   <Mail size={32} />
@@ -56,8 +66,16 @@ const Contact = () => {
                   <p className="text-xl font-bold text-white group-hover:text-primary transition-colors">{DATA.personal.email}</p>
                 </div>
               </a>
-              
 
+              <a href={DATA.personal.resume} download className="flex items-center gap-6 p-8 premium-blur border-white/5 hover:border-secondary/30 transition-all rounded-[2rem] group">
+                <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+                  <FileDown size={32} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-1">Curriculum Vitae</p>
+                  <p className="text-xl font-bold text-white group-hover:text-secondary transition-colors">Download Resume</p>
+                </div>
+              </a>
             </div>
 
 
