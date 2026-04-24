@@ -9,7 +9,7 @@ const Experience = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-20">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            Professional <span className="text-primary italic">Chronicle</span>
+            Professional <span className="text-primary italic">Protocol</span>
           </h2>
           <p className="text-xl text-slate-500 font-light max-w-2xl">
             My journey through various internships, where I've applied cybersecurity principles and development logic to real-world challenges.
