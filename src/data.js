@@ -7,7 +7,7 @@ export const DATA = {
     github: "https://github.com/Tanisha-2005",
     linkedin: "https://linkedin.com/in/tanisha-gupta-81b004292",
     tryhackme: "https://tryhackme.com/p/Tanishagupta",
-    resume: "#", // Add your resume link here
+    resume: "/Tanisha_resume.pdf",
     summary: "I am a BCA Graduate and a dedicated VAPT Analyst with a parallel expertise in Frontend Development. My professional goal is to build secure, user-centric digital experiences where security is integrated into the design from the start. With extensive internship experience in the VAPT domain and a strong foundation in modern web technologies, I bridge the gap between aesthetic frontend execution and impenetrable security. I also possess foundational knowledge of backend systems, allowing me to understand and secure the entire application stack."
   },
   internships: [

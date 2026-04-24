@@ -67,7 +67,7 @@ const Contact = () => {
                 </div>
               </a>
 
-              <a href={DATA.personal.resume} download className="flex items-center gap-6 p-8 premium-blur border-white/5 hover:border-secondary/30 transition-all rounded-[2rem] group">
+              <a href={DATA.personal.resume} download="Tanisha_resume.pdf" className="flex items-center gap-6 p-8 premium-blur border-white/5 hover:border-secondary/30 transition-all rounded-[2rem] group">
                 <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
                   <FileDown size={32} />
                 </div>
