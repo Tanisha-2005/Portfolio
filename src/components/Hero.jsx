@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, ArrowRight, Cpu, Lock } from 'lucide-react';
+import { ShieldCheck, ArrowRight, Cpu, Lock, Code, MonitorSmartphone } from 'lucide-react';
 import { DATA } from '../data';
 import profileImg from '../assets/profile.jpg';
 
@@ -34,7 +34,7 @@ const Hero = () => {
               As a {DATA.personal.degree} student, I build high-performance applications with security at their core.
             </p>
 
-            <div className="flex flex-wrap gap-5">
+            <div className="flex flex-wrap items-center gap-5">
               <a href="#contact" className="group px-8 py-4 bg-white text-slate-950 font-bold rounded-2xl hover:bg-primary transition-all flex items-center gap-2 shadow-lg shadow-white/10">
                 Work with me
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -60,21 +60,31 @@ const Hero = () => {
                   </a>
                 ))}
               </div>
+
+              <div className="flex items-center gap-6 md:ml-4 md:pl-8 md:border-l border-white/10">
+                 <div>
+                   <p className="text-2xl font-black text-white leading-none">6+</p>
+                   <p className="text-[10px] font-bold uppercase tracking-widest text-primary mt-1.5">Internships</p>
+                 </div>
+                 <div>
+                   <p className="text-2xl font-black text-white leading-none">15+</p>
+                   <p className="text-[10px] font-bold uppercase tracking-widest text-primary mt-1.5">Tools</p>
+                 </div>
+              </div>
             </div>
 
-            <div className="mt-16 pt-8 border-t border-white/5 grid grid-cols-3 gap-8">
-              <div>
-                <p className="text-3xl font-black text-white">6+</p>
-                <p className="text-xs uppercase tracking-widest text-slate-500 mt-1">Internships</p>
-              </div>
-              <div>
-                <p className="text-3xl font-black text-white">15+</p>
-                <p className="text-xs uppercase tracking-widest text-slate-500 mt-1">Tools</p>
-              </div>
-              <div>
-                <p className="text-3xl font-black text-white">2nd</p>
-                <p className="text-xs uppercase tracking-widest text-slate-500 mt-1">IT Utsav '25</p>
-              </div>
+            <div className="mt-12 lg:mt-16 pt-8 border-t border-white/10 grid grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-0 lg:divide-x divide-white/10">
+              {[
+                { icon: ShieldCheck, title: "VAPT &\nSecurity Auditing" },
+                { icon: Code, title: "Frontend\nDevelopment" },
+                { icon: MonitorSmartphone, title: "Responsive\nDesign" },
+                { icon: Lock, title: "Secure\nSolutions" }
+              ].map((feature, idx) => (
+                <div key={idx} className="flex flex-col items-center justify-center text-center px-2 group cursor-default">
+                  <feature.icon className="text-primary w-7 h-7 md:w-8 md:h-8 mb-3 drop-shadow-[0_0_15px_rgba(14,165,233,0.5)] group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+                  <p className="text-[12px] md:text-sm font-semibold text-slate-300 whitespace-pre-line leading-relaxed group-hover:text-white transition-colors">{feature.title}</p>
+                </div>
+              ))}
             </div>
           </motion.div>
 
@@ -83,7 +93,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="lg:col-span-4 relative lg:ml-auto"
+            className="lg:col-span-4 relative lg:ml-auto order-first lg:order-last mb-10 lg:mb-0"
           >
             <div className="relative aspect-square">
               {/* Decorative shapes */}
@@ -131,6 +141,8 @@ const Hero = () => {
             </div>
           </motion.div>
         </div>
+
+
       </div>
     </section>
   );
