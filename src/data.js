@@ -14,7 +14,7 @@ export const DATA = {
     {
       role: "Cybersecurity Intern",
       company: "Cyart Tech",
-      period: "Jan 2026 – Present",
+      period: "Jan 2026 – May 2026",
       location: "Remote",
       type: "VAPT Domain (Co-Leader)",
       description: "Acquired significant experience in the VAPT domain while serving as a co-leader. Performed vulnerability assessments for enterprise applications, identified modern threat vectors, and contributed to the Chain Discovery Dashboard project."
@@ -112,6 +112,7 @@ export const DATA = {
     development: ["JavaScript", "HTML", "CSS", "C", "C++", "Node.js"]
   },
   certifications: [
+    { title: "Cloud Computing (Grade A+)", provider: "IBM SkillsBuild - Advanced IT Skill Program" },
     { title: "Advanced Penetration Testing", provider: "Mindluster" },
     { title: "Cybersecurity Hackfest", provider: "Mile2" },
     { title: "Hack The Planet", provider: "Udemy" },
