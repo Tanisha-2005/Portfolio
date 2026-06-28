@@ -2,7 +2,7 @@ export const DATA = {
   personal: {
     name: "Tanisha Gupta",
     degree: "BCA (Cybersecurity)",
-    location: "Alwar, Rajasthan",
+    location: "Delhi, India",
     email: "guptajitannu555@gmail.com",
     github: "https://github.com/Tanisha-2005",
     linkedin: "https://linkedin.com/in/tanisha-gupta-81b004292",
@@ -69,6 +69,12 @@ export const DATA = {
     }
   ],
   projects: [
+    {
+      title: "Chain Discovery Dashboard",
+      description: "A comprehensive SOC & VAPT Operations Portal developed during my Cyart Tech internship for visualizing attack chains and managing vulnerability remediation.",
+      tags: ["Cybersecurity", "SOC", "VAPT", "Dashboard"],
+      link: "https://github.com/Tanisha-2005/Chain-Discovery-Dashboard"
+    },
     {
       title: "ScanHexa",
       description: "A centralized cybersecurity command center for vulnerability discovery and threat monitoring. Integrates 15+ specialized security tools into a single, intuitive interface.",

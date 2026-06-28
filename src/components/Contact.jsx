@@ -5,11 +5,73 @@ import { DATA } from '../data';
 
 const Contact = () => {
   const [status, setStatus] = useState('');
+  const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
+
+  const validateEmail = (emailVal) => {
+    const trimmed = (emailVal || '').trim();
+    // HTML5 standard email regex
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    return emailRegex.test(trimmed);
+  };
+
+  const checkDomainMX = async (emailVal) => {
+    const domain = (emailVal || '').trim().split('@')[1];
+    if (!domain) return false;
+    try {
+      const response = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(domain)}&type=MX`);
+      const data = await response.json();
+      // If status is 3 (NXDOMAIN), the domain doesn't exist
+      if (data.Status === 3) return false;
+      // Fail-safe: if status is 0, consider domain active
+      return data.Status === 0;
+    } catch (e) {
+      // Fail open if public DNS query fails to ensure users can still submit
+      return true;
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+    if (value && !validateEmail(value)) {
+      setEmailError('Please enter a valid email address.');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const handleEmailBlur = (e) => {
+    const trimmed = e.target.value.trim();
+    setEmail(trimmed);
+    if (trimmed && !validateEmail(trimmed)) {
+      setEmailError('Please enter a valid email address.');
+    } else {
+      setEmailError('');
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const data = new FormData(form);
+    const emailVal = (data.get('email') || '').toString();
+
+    if (!validateEmail(emailVal)) {
+      setEmailError('Please enter a valid email address.');
+      return;
+    }
+
+    setStatus('checking');
+    const domainIsValid = await checkDomainMX(emailVal);
+    if (!domainIsValid) {
+      setEmailError('This email domain does not exist or cannot receive emails.');
+      setStatus('');
+      return;
+    }
+    
+    // Set the trimmed email to the form data
+    data.set('email', emailVal.trim());
     
     setStatus('sending');
     
@@ -25,6 +87,8 @@ const Contact = () => {
       if (response.ok) {
         setStatus('success');
         form.reset();
+        setEmail('');
+        setEmailError('');
       } else {
         setStatus('error');
       }
@@ -104,7 +168,11 @@ const Contact = () => {
                 <h4 className="text-2xl font-bold text-white">Message Transmitted!</h4>
                 <p className="text-slate-500">I'll review your inquiry and get back to you shortly.</p>
                 <button 
-                  onClick={() => setStatus('')}
+                  onClick={() => {
+                    setStatus('');
+                    setEmail('');
+                    setEmailError('');
+                  }}
                   className="text-primary font-bold hover:underline"
                 >
                   Send another message
@@ -119,7 +187,19 @@ const Contact = () => {
                   </div>
                   <div className="space-y-3">
                     <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Reach Out At</label>
-                    <input name="email" required type="email" placeholder="Email Address" className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700" />
+                    <input 
+                      name="email" 
+                      required 
+                      type="email" 
+                      value={email}
+                      onChange={handleEmailChange}
+                      onBlur={handleEmailBlur}
+                      placeholder="Email Address" 
+                      className={`w-full bg-white/5 border ${emailError ? 'border-red-500/50 focus:border-red-500' : 'border-white/5 focus:border-primary/50'} rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700`} 
+                    />
+                    {emailError && (
+                      <span className="text-xs text-red-400 mt-1 block pl-2 font-medium">{emailError}</span>
+                    )}
                   </div>
                 </div>
                 <div className="space-y-3">
@@ -132,11 +212,11 @@ const Contact = () => {
                 </div>
                 <button 
                   type="submit"
-                  disabled={status === 'sending'}
+                  disabled={status === 'sending' || status === 'checking'}
                   className="group w-full py-5 bg-white text-slate-950 font-black rounded-2xl hover:bg-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-xl overflow-hidden relative"
                 >
                   <span className="relative z-10 flex items-center gap-3">
-                    {status === 'sending' ? 'Transmitting...' : 'Transmit Message'}
+                    {status === 'checking' ? 'Verifying email...' : status === 'sending' ? 'Transmitting...' : 'Transmit Message'}
                     <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                   </span>
                 </button>
