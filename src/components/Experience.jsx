@@ -16,16 +16,24 @@ const Experience = () => {
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:ml-[2.25rem] md:before:translate-x-0 before:h-full before:w-[2px] before:bg-gradient-to-b before:from-transparent before:via-white/10 before:to-transparent">
           {DATA.internships.map((job, index) => (
             <motion.div 
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="premium-blur p-8 md:p-10 rounded-[2.5rem] border-white/5 hover:border-primary/20 transition-all duration-500 group"
+              className="relative pl-12 md:pl-24 group"
             >
+              {/* Timeline Dot */}
+              <div className="absolute left-0 md:left-4 top-[2.5rem] flex items-center justify-center z-10">
+                <div className="w-10 h-10 rounded-full bg-slate-950 border border-white/10 flex items-center justify-center group-hover:border-primary/50 transition-all duration-500 shadow-xl group-hover:scale-110">
+                  <div className="w-3 h-3 rounded-full bg-white/20 group-hover:bg-primary transition-all duration-500"></div>
+                </div>
+              </div>
+
+              <div className="premium-blur p-8 md:p-10 rounded-[2.5rem] border-white/5 group-hover:border-primary/20 transition-all duration-500 group-hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/5">
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-4 mb-6">
@@ -61,6 +69,7 @@ const Experience = () => {
                     <span className="text-xs font-bold text-white uppercase tracking-widest">Verified Role</span>
                   </div>
                 </div>
+              </div>
               </div>
             </motion.div>
           ))}

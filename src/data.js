@@ -118,6 +118,7 @@ export const DATA = {
     development: ["JavaScript", "HTML", "CSS", "C", "C++", "Node.js"]
   },
   certifications: [
+    { title: "Certificate Of Participation — 10 Days International Conclave on AI, Cybersecurity & Emerging Technologies", provider: "Centre for Innovation and Incubation, Central University of Haryana & M Cyber Academy" },
     { title: "Cloud Computing (Grade A+)", provider: "IBM SkillsBuild - Advanced IT Skill Program" },
     { title: "Advanced Penetration Testing", provider: "Mindluster" },
     { title: "Cybersecurity Hackfest", provider: "Mile2" },

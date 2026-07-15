@@ -108,12 +108,14 @@ const Skills = () => {
             </h3>
             <div className="space-y-4">
               {DATA.certifications.map((cert, index) => (
-                <div key={index} className="px-6 py-5 premium-blur border-white/5 hover:border-primary/30 transition-all rounded-2xl flex items-center justify-between group">
-                   <div>
-                      <p className="text-primary text-[10px] font-black uppercase tracking-widest mb-1">{cert.provider}</p>
-                      <h4 className="font-semibold text-white group-hover:text-primary/90 transition-colors">{cert.title}</h4>
+                <div key={index} className="px-6 py-5 premium-blur border-white/5 hover:border-primary/30 transition-all rounded-2xl flex items-start justify-between group gap-4">
+                   <div className="flex-1">
+                      <p className="text-primary text-[10px] font-black uppercase tracking-widest mb-2 leading-relaxed">{cert.provider}</p>
+                      <h4 className="font-semibold text-white group-hover:text-primary/90 transition-colors leading-snug text-sm sm:text-base">{cert.title}</h4>
                    </div>
-                   <Star size={18} className="text-slate-700 group-hover:text-primary transition-colors" />
+                   <div className="shrink-0 mt-1">
+                      <Star size={20} className="text-slate-700 group-hover:text-primary transition-colors" />
+                   </div>
                 </div>
               ))}
             </div>
