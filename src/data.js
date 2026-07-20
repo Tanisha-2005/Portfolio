@@ -8,6 +8,7 @@ export const DATA = {
     linkedin: "https://linkedin.com/in/tanisha-gupta-81b004292",
     tryhackme: "https://tryhackme.com/p/Tanishagupta",
     resume: "Tanisha_resume.pdf",
+    web3forms_key: "YOUR_WEB3FORMS_ACCESS_KEY_HERE", // Go to web3forms.com to get a free access key
     summary: "I am a BCA Graduate and a dedicated VAPT Analyst with a parallel expertise in Frontend Development. My professional goal is to build secure, user-centric digital experiences where security is integrated into the design from the start. With extensive internship experience in the VAPT domain and a strong foundation in modern web technologies, I bridge the gap between aesthetic frontend execution and impenetrable security. I also possess foundational knowledge of backend systems, allowing me to understand and secure the entire application stack."
   },
   internships: [
@@ -113,11 +114,45 @@ export const DATA = {
     }
   ],
   skills: {
-    cybersecurity: ["Vulnerability Assessment (VAPT)", "Bug Bounty Hunting", "Penetration Testing"],
-    tools: ["Burp Suite Professional", "Nmap", "Wireshark", "Metasploit", "OpenVAS", "Sqlmap", "Dirsearch"],
-    development: ["JavaScript", "HTML", "CSS", "C", "C++", "Node.js"]
+    cybersecurity: [
+      { name: "Vulnerability Assessment (VAPT)", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kalilinux/kalilinux-original.svg" },
+      { name: "Bug Bounty Hunting", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/bugbountyjp.svg" },
+      { name: "Penetration Testing", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/tryhackme.svg" }
+    ],
+    tools: [
+      { name: "Burp Suite Professional", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/portswigger.svg" },
+      { name: "Nmap", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/networkx/networkx-original.svg" },
+      { name: "Wireshark", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/wireshark.svg" },
+      { name: "Metasploit", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/metasploit.svg" },
+      { name: "OpenVAS", icon: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/greenbone.svg" },
+      { name: "Sqlmap", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqldeveloper/sqldeveloper-original.svg" },
+      { name: "Dirsearch", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg" }
+    ],
+    development: [
+      { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
+      { name: "HTML", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
+      { name: "CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" },
+      { name: "C", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" },
+      { name: "C++", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" },
+      { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" }
+    ]
   },
   certifications: [
+    {
+      title: "Certified LLM Security Expert (CLLMSE) 🎓",
+      provider: "Red Team Leaders",
+      achievement: "Successfully passed the CLLMSE certification exam with 82% score.",
+      topics: [
+        "LLM Security & Threats",
+        "Prompt Injection and Jailbreak Mitigation",
+        "OWASP Top 10 for LLM Applications",
+        "AI Red Teaming",
+        "Secure AI Agents & MCP Security",
+        "AI Governance and Risk Management"
+      ],
+      link: "https://courses.redteamleaders.com/exam-completion/514d44ff66231f4e",
+
+    },
     { title: "Certificate Of Participation — 10 Days International Conclave on AI, Cybersecurity & Emerging Technologies", provider: "Centre for Innovation and Incubation, Central University of Haryana & M Cyber Academy" },
     { title: "Cloud Computing (Grade A+)", provider: "IBM SkillsBuild - Advanced IT Skill Program" },
     { title: "Advanced Penetration Testing", provider: "Mindluster" },

@@ -1,8 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck, ArrowRight, Cpu, Lock, Code, MonitorSmartphone } from 'lucide-react';
 import { DATA } from '../data';
 import profileImg from '../assets/profile.jpg';
+
+const Typewriter = ({ words }) => {
+  const [currentWord, setCurrentWord] = useState('');
+  const [wordIndex, setWordIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const word = words[wordIndex];
+    let timeout;
+    
+    if (isDeleting) {
+      timeout = setTimeout(() => {
+        setCurrentWord(word.substring(0, currentWord.length - 1));
+        if (currentWord.length === 0) {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length);
+        }
+      }, 50);
+    } else {
+      if (currentWord.length === word.length) {
+        timeout = setTimeout(() => setIsDeleting(true), 2000);
+      } else {
+        timeout = setTimeout(() => {
+          setCurrentWord(word.substring(0, currentWord.length + 1));
+        }, 100);
+      }
+    }
+    return () => clearTimeout(timeout);
+  }, [currentWord, isDeleting, wordIndex, words]);
+
+  return (
+    <span>
+      {currentWord}
+      <span className="animate-pulse ml-1 opacity-70">|</span>
+    </span>
+  );
+};
 
 const Hero = () => {
   return (
@@ -22,16 +59,18 @@ const Hero = () => {
               Available for Internships & Projects
             </div>
             
-            <h1 className="text-6xl md:text-8xl font-black mb-6 leading-[0.9] text-white">
+            <h1 className="text-6xl md:text-8xl font-black mb-6 leading-[0.9] text-white h-[280px] md:h-[320px]">
               Secure. <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary/50 glow-text-primary">Reliable.</span> <br />
-              Resilient.
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary/50 glow-text-primary">
+                <Typewriter words={['Reliable.', 'Resilient.', 'Robust.', 'Scalable.']} />
+              </span> <br />
+              Systems.
             </h1>
             
             <p className="text-xl text-slate-400 mb-10 max-w-2xl leading-relaxed font-light">
               Hi, I'm <span className="text-white font-semibold">{DATA.personal.name}</span>. 
               I bridge the gap between <span className="text-white italic">development</span> and <span className="text-white italic">security</span>. 
-              As a {DATA.personal.degree} student, I build high-performance applications with security at their core.
+              As a {DATA.personal.degree} graduate, I build high-performance applications with security at their core.
             </p>
 
             <div className="flex flex-wrap items-center gap-5">

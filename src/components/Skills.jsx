@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, ShieldAlert, Wrench, Award, CheckCircle2, Star } from 'lucide-react';
+import { Code2, ShieldAlert, Wrench, Award, CheckCircle2, Star, ExternalLink, FileText } from 'lucide-react';
 import { DATA } from '../data';
 
 const Skills = () => {
@@ -47,9 +47,11 @@ const Skills = () => {
                <h3 className="text-2xl font-bold text-white">Cybersecurity</h3>
             </div>
             {DATA.skills.cybersecurity.map((skill) => (
-              <motion.div key={skill} variants={item} className="p-4 premium-blur flex items-center gap-4 hover:border-primary/50 transition-all cursor-default group border-white/5">
-                <CheckCircle2 className="text-primary group-hover:scale-125 transition-transform" size={20} />
-                <span className="font-medium text-slate-300">{skill}</span>
+              <motion.div key={skill.name} variants={item} className="p-4 premium-blur flex items-center gap-4 hover:border-primary/50 transition-all cursor-default group border-white/5 rounded-2xl">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center p-2 shrink-0 group-hover:scale-110 group-hover:bg-primary/20 transition-all shadow-[0_0_15px_rgba(var(--color-primary),0.1)]">
+                  <img src={skill.icon} alt={skill.name} className="w-full h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100" />
+                </div>
+                <span className="font-medium text-slate-300 group-hover:text-white transition-colors">{skill.name}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -69,9 +71,11 @@ const Skills = () => {
                <h3 className="text-2xl font-bold text-white">Security Tools</h3>
             </div>
             {DATA.skills.tools.map((skill) => (
-              <motion.div key={skill} variants={item} className="p-4 premium-blur flex items-center gap-4 hover:border-secondary/50 transition-all cursor-default group border-white/5">
-                <CheckCircle2 className="text-secondary group-hover:scale-125 transition-transform" size={20} />
-                <span className="font-medium text-slate-300">{skill}</span>
+              <motion.div key={skill.name} variants={item} className="p-4 premium-blur flex items-center gap-4 hover:border-secondary/50 transition-all cursor-default group border-white/5 rounded-2xl">
+                <div className="w-10 h-10 rounded-xl bg-secondary/10 border border-secondary/20 flex items-center justify-center p-2 shrink-0 group-hover:scale-110 group-hover:bg-secondary/20 transition-all shadow-[0_0_15px_rgba(var(--secondary),0.1)]">
+                  <img src={skill.icon} alt={skill.name} className="w-full h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100" />
+                </div>
+                <span className="font-medium text-slate-300 group-hover:text-white transition-colors">{skill.name}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -91,44 +95,122 @@ const Skills = () => {
                <h3 className="text-2xl font-bold text-white">Development</h3>
             </div>
             {DATA.skills.development.map((skill) => (
-              <motion.div key={skill} variants={item} className="p-4 premium-blur flex items-center gap-4 hover:border-accent/50 transition-all cursor-default group border-white/5">
-                <CheckCircle2 className="text-accent group-hover:scale-125 transition-transform" size={20} />
-                <span className="font-medium text-slate-300">{skill}</span>
+              <motion.div key={skill.name} variants={item} className="p-4 premium-blur flex items-center gap-4 hover:border-accent/50 transition-all cursor-default group border-white/5 rounded-2xl">
+                <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center p-2 shrink-0 group-hover:scale-110 group-hover:bg-accent/20 transition-all shadow-[0_0_15px_rgba(var(--accent),0.1)]">
+                  <img src={skill.icon} alt={skill.name} className="w-full h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100" />
+                </div>
+                <span className="font-medium text-slate-300 group-hover:text-white transition-colors">{skill.name}</span>
               </motion.div>
             ))}
           </motion.div>
         </div>
 
+        {/* Featured Certifications */}
+        {DATA.certifications.filter(c => c.achievement).length > 0 && (
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-40 mb-20"
+          >
+            <h3 className="text-3xl font-bold mb-10 flex items-center gap-4 text-white">
+              <Award className="text-primary" size={32} />
+              Featured Credentials
+            </h3>
+            <div className="grid grid-cols-1 gap-8">
+              {DATA.certifications.filter(c => c.achievement).map((cert, index) => (
+                <div key={index} className="p-8 md:p-10 premium-blur border-white/10 hover:border-primary/40 transition-all rounded-[2.5rem] group relative overflow-hidden bg-gradient-to-br from-primary/[0.07] via-white/[0.02] to-transparent shadow-2xl">
+                  <div className="absolute top-0 right-0 p-8 opacity-[0.02] group-hover:opacity-[0.06] transition-opacity pointer-events-none transform translate-x-8 -translate-y-8">
+                    <Award size={200} />
+                  </div>
+                  
+                  <div className="relative z-10 flex flex-col lg:flex-row gap-10">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="px-4 py-1.5 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest rounded-full border border-primary/20 shadow-[0_0_15px_rgba(var(--color-primary),0.1)]">
+                          {cert.provider}
+                        </span>
+                        <span className="flex items-center gap-1.5 text-xs text-emerald-400 font-bold bg-emerald-400/10 px-3 py-1.5 rounded-full border border-emerald-400/20 shadow-[0_0_15px_rgba(52,211,153,0.1)]">
+                          <CheckCircle2 size={14} /> Verified
+                        </span>
+                      </div>
+                      <h4 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-400 transition-all">{cert.title}</h4>
+                      <p className="text-slate-400 text-lg leading-relaxed mb-8 max-w-2xl">{cert.achievement}</p>
+                      
+                      <div className="flex flex-wrap gap-4">
+                        {cert.link && (
+                           <a href={cert.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-primary text-slate-900 font-bold rounded-xl hover:bg-primary/90 hover:scale-105 transition-all text-sm shadow-[0_0_20px_rgba(var(--color-primary),0.3)]">
+                             <span>Verify Credential</span>
+                             <ExternalLink size={16} />
+                           </a>
+                        )}
+                        {cert.image && (
+                           <a href={cert.image.startsWith('http') ? cert.image : `/${cert.image}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-white/5 text-white font-bold rounded-xl hover:bg-white/10 hover:scale-105 transition-all text-sm border border-white/10">
+                             <span>View Certificate</span>
+                             <FileText size={16} />
+                           </a>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="w-full lg:w-5/12 lg:border-l border-white/5 lg:pl-10">
+                      <p className="text-xs font-bold text-slate-400 mb-6 uppercase tracking-widest">Key Modules</p>
+                      <div className="flex flex-wrap gap-3">
+                        {cert.topics?.map((topic, i) => (
+                          <span key={i} className="px-4 py-2 bg-white/[0.03] hover:bg-primary/10 border border-white/10 hover:border-primary/30 text-slate-300 hover:text-white text-[13px] font-medium rounded-xl transition-all cursor-default flex items-center gap-2 shadow-sm">
+                             <div className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                             {topic}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
         {/* Certifications & Achievements */}
-        <div className="mt-40 grid grid-cols-1 lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-5">
+        <div className={`grid grid-cols-1 lg:grid-cols-12 gap-16 ${DATA.certifications.filter(c => c.achievement).length > 0 ? '' : 'mt-40'}`}>
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-5"
+          >
             <h3 className="text-3xl font-bold mb-10 flex items-center gap-4 text-white">
               <Award className="text-primary" size={32} />
               Professional Certs
             </h3>
             <div className="space-y-4">
-              {DATA.certifications.map((cert, index) => (
-                <div key={index} className="px-6 py-5 premium-blur border-white/5 hover:border-primary/30 transition-all rounded-2xl flex items-start justify-between group gap-4">
-                   <div className="flex-1">
-                      <p className="text-primary text-[10px] font-black uppercase tracking-widest mb-2 leading-relaxed">{cert.provider}</p>
-                      <h4 className="font-semibold text-white group-hover:text-primary/90 transition-colors leading-snug text-sm sm:text-base">{cert.title}</h4>
-                   </div>
-                   <div className="shrink-0 mt-1">
-                      <Star size={20} className="text-slate-700 group-hover:text-primary transition-colors" />
-                   </div>
-                </div>
+              {DATA.certifications.filter(c => !c.achievement).map((cert, index) => (
+                  <div key={index} className="px-6 py-5 premium-blur border-white/5 hover:border-primary/30 transition-all rounded-2xl flex items-start justify-between group gap-4">
+                     <div className="flex-1">
+                        <p className="text-primary text-[10px] font-black uppercase tracking-widest mb-2 leading-relaxed">{cert.provider}</p>
+                        <h4 className="font-semibold text-white group-hover:text-primary/90 transition-colors leading-snug text-sm sm:text-base">{cert.title}</h4>
+                     </div>
+                     <div className="shrink-0 mt-1">
+                        <Star size={20} className="text-slate-700 group-hover:text-primary transition-colors" />
+                     </div>
+                  </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="lg:col-span-7">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-7"
+          >
             <h3 className="text-3xl font-bold mb-10 flex items-center gap-4 text-white">
               <Star className="text-secondary" size={32} />
               Key Milestones
             </h3>
             <div className="grid grid-cols-1 gap-6">
               {DATA.achievements.map((ach, index) => (
-                <div key={index} className="p-10 premium-blur border-white/5 border-l-4 border-l-secondary rounded-[2.5rem] relative overflow-hidden group">
+                <div key={index} className="p-8 md:p-10 premium-blur border-white/5 border-l-4 border-l-secondary rounded-[2.5rem] relative overflow-hidden group hover:-translate-y-1 transition-transform cursor-default">
                    <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity">
                       <Star size={120} />
                    </div>
@@ -137,7 +219,7 @@ const Skills = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
