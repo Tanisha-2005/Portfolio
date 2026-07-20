@@ -1,16 +1,18 @@
 # 🛡️ Tanisha Gupta | Cybersecurity & Frontend Developer Portfolio
 
-Welcome to my personal portfolio! I am a **BCA Graduate** focused on **Cybersecurity (VAPT)** and **Web Development**. This project showcases my journey, technical expertise, and professional achievements in securing the digital landscape while building high-performance frontend experiences.
+Welcome to my personal portfolio repository! I am a **BCA Graduate (Cybersecurity)** specializing in **Vulnerability Assessment & Penetration Testing (VAPT)** and **Modern Web Development**. This repository contains the source code for my portfolio, which showcases my journey, technical expertise, and professional achievements in securing the digital landscape while building high-performance frontend experiences.
+
+**🚀 View Live Portfolio:** [Tanisha-2005.github.io/Portfolio](https://Tanisha-2005.github.io/Portfolio/)
 
 ---
 
 ## 👤 About Me
 
-I am a dedicated **VAPT Analyst** with a parallel expertise in **Frontend Development**. My goal is to build secure, user-centric digital experiences where security is integrated into the design from the start.
+I am a dedicated **VAPT Analyst** with a parallel expertise in **Frontend Development**. My goal is to build secure, user-centric digital experiences where security is integrated into the design from the start. With extensive internship experience (6+ Internships) in the VAPT domain, I bridge the gap between aesthetic frontend execution and impenetrable security.
 
-- 📍 Based in **Alwar, Rajasthan**
-- 🎓 **BCA (Cybersecurity)** from Uttaranchal University
-- 🛡️ Specialized in **Vulnerability Assessment & Penetration Testing**
+- 📍 Based in **Delhi, India**
+- 🎓 **BCA (Cybersecurity)** Graduate
+- 🛡️ Specialized in **Vulnerability Assessment, AI Security & Penetration Testing**
 
 ---
 
@@ -18,33 +20,38 @@ I am a dedicated **VAPT Analyst** with a parallel expertise in **Frontend Develo
 
 - **[ScanHexa](https://github.com/Tanisha-2005/ScanHexa)**: A centralized cybersecurity command center integrating 15+ specialized security tools.
 - **[Cybreon](https://github.com/Tanisha-2005/Cybreon)**: AI-powered cybersecurity platform for malware analysis and deepfake forensics.
+- **[Chain Discovery Dashboard](https://github.com/Tanisha-2005/Chain-Discovery)**: Advanced intelligence and threat tracking dashboard.
 - **[SmartDoc](https://github.com/Tanisha-2005/SmartDoc)**: Secure, AI-enhanced document suite for automated summarization.
-- **[Network Vulnerability Scanner](https://github.com/Tanisha-2005/Network_Vulnerability_Scanner)**: Custom Nmap-based tool for network security research.
 
 ---
 
 ## 🛠️ Tech Stack & Skills
 
-### 🔒 Cybersecurity
-- **Tools**: Burp Suite Pro, Nmap, Wireshark, Metasploit, OpenVAS, SQLmap
-- **Domains**: VAPT, Bug Bounty Hunting, Penetration Testing, Network Security
+### 🔒 Cybersecurity & VAPT
+- **Core Domains**: Vulnerability Assessment, Bug Bounty Hunting, Penetration Testing, AI/LLM Security.
+- **Security Tools**: Burp Suite Professional, Nmap, Wireshark, Metasploit, OpenVAS, SQLmap, Dirsearch.
 
-### 🌐 Development
-- **Frontend**: JavaScript, HTML5, CSS
-- **Backend/Scripting**: Node.js, C, C++
+### 🌐 Frontend & Software Development
+- **Core Frameworks**: React.js, Node.js
+- **Languages**: JavaScript, HTML5, CSS3, C, C++
+- **UI/UX & Styling**: Tailwind CSS, Framer Motion (Animations), Lucide React
 
 ---
 
-## 🎖️ Certifications & Achievements
+## 🎖️ Featured Credentials & Achievements
 
-- **Advanced Penetration Testing** (Mindluster)
-- **Pre Security Specialist** (TryHackMe)
+- **Certified LLM Security Expert (CLLMSE) 🎓** - *Red Team Leaders* (82% Score)
+- **Advanced Penetration Testing** - *Mindluster*
+- **Cloud Computing (Grade A+)** - *IBM SkillsBuild*
+- **Pre Security Specialist** - *TryHackMe*
 - **2nd Position @ IT Utsav 2025** (Excellence in Animated Storytelling)
 - **3rd Position @ IT Utsav 2024** (Technical Innovation)
 
 ---
 
-## 🏗️ Getting Started
+## 🏗️ Local Development
+
+If you want to run this portfolio locally:
 
 ### Prerequisites
 - Node.js (v18+)
@@ -54,6 +61,7 @@ I am a dedicated **VAPT Analyst** with a parallel expertise in **Frontend Develo
 1. Clone the repository:
    ```bash
    git clone https://github.com/Tanisha-2005/Portfolio.git
+   cd Portfolio
    ```
 2. Install dependencies:
    ```bash
@@ -63,20 +71,28 @@ I am a dedicated **VAPT Analyst** with a parallel expertise in **Frontend Develo
    ```bash
    npm run dev
    ```
+   The site will be running at `http://localhost:5173/Portfolio/`.
 
-### Deployment
-This project is configured for **GitHub Pages**. To deploy your own version:
-1. Update `base: '/YOUR_REPO_NAME/'` in `vite.config.js`.
-2. Push to GitHub and enable **GitHub Actions** in the repository settings.
+---
+
+## 🚀 Deployment
+
+This project uses `gh-pages` for seamless deployment to GitHub Pages.
+
+To build and deploy your latest changes, simply run:
+```bash
+npm run deploy
+```
+*(This automatically runs Vite build and pushes the `dist` folder to the `gh-pages` branch).*
 
 ---
 
 ## 📧 Contact
 
 - **Email**: [guptajitannu555@gmail.com](mailto:guptajitannu555@gmail.com)
-- **LinkedIn**: [tanisha-gupta-81b004292](https://linkedin.com/in/tanisha-gupta-81b004292)
+- **LinkedIn**: [Tanisha Gupta](https://linkedin.com/in/tanisha-gupta-81b004292)
 - **TryHackMe**: [Tanishagupta](https://tryhackme.com/p/Tanishagupta)
 - **Portfolio**: [View Live](https://Tanisha-2005.github.io/Portfolio/)
 
 ---
-*Created with ❤️ by Tanisha Gupta*
+*Built with React, Tailwind CSS & Framer Motion. Created with ❤️ by Tanisha Gupta*
