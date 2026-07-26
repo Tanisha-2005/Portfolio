@@ -139,6 +139,23 @@ export const DATA = {
   },
   certifications: [
     {
+      title: "Ethical Hacker",
+      provider: "Cisco Networking Academy",
+      completed: "July 2026",
+      achievement: "Successfully completed the Ethical Hacker course issued by Cisco Networking Academy. Gained hands-on proficiency in vulnerability assessments, penetration testing fundamentals, network & web security, and threat analysis through 70 hours of self-paced learning and 34 practical labs.",
+      topics: [
+        "70 hours of self-paced learning",
+        "34 practical hands-on labs",
+        "Ethical Hacking",
+        "Vulnerability Assessment",
+        "Penetration Testing Fundamentals",
+        "Network & Web Security",
+        "Threat Analysis"
+      ],
+      link: "https://www.credly.com/badges/c8a99f3a-05dd-4af5-b5d1-c213671ce881/public_url",
+      badgeImage: "https://images.credly.com/images/242902b5-f527-42ad-865e-977c9e1b5b58/linkedin_thumb_image.png"
+    },
+    {
       title: "Certified LLM Security Expert (CLLMSE) 🎓",
       provider: "Red Team Leaders",
       achievement: "Successfully passed the CLLMSE certification exam with 82% score.",
@@ -151,7 +168,6 @@ export const DATA = {
         "AI Governance and Risk Management"
       ],
       link: "https://courses.redteamleaders.com/exam-completion/514d44ff66231f4e",
-
     },
     { title: "Certificate Of Participation — 10 Days International Conclave on AI, Cybersecurity & Emerging Technologies", provider: "Centre for Innovation and Incubation, Central University of Haryana & M Cyber Academy" },
     { title: "Cloud Computing (Grade A+)", provider: "IBM SkillsBuild - Advanced IT Skill Program" },

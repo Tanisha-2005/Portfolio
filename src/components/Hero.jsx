@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, ArrowRight, Cpu, Lock, Code, MonitorSmartphone } from 'lucide-react';
+import { ShieldCheck, ArrowRight, Cpu, Lock, Code, MonitorSmartphone, FileDown } from 'lucide-react';
 import { DATA } from '../data';
 import profileImg from '../assets/profile.jpg';
 

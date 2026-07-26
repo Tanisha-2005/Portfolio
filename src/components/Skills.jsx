@@ -126,10 +126,15 @@ const Skills = () => {
                   
                   <div className="relative z-10 flex flex-col lg:flex-row gap-10">
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-4">
+                      <div className="flex flex-wrap items-center gap-3 mb-4">
                         <span className="px-4 py-1.5 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest rounded-full border border-primary/20 shadow-[0_0_15px_rgba(var(--color-primary),0.1)]">
                           {cert.provider}
                         </span>
+                        {cert.completed && (
+                          <span className="px-3.5 py-1.5 bg-white/5 text-slate-300 text-[10px] font-bold uppercase tracking-widest rounded-full border border-white/10">
+                            Completed: {cert.completed}
+                          </span>
+                        )}
                         <span className="flex items-center gap-1.5 text-xs text-emerald-400 font-bold bg-emerald-400/10 px-3 py-1.5 rounded-full border border-emerald-400/20 shadow-[0_0_15px_rgba(52,211,153,0.1)]">
                           <CheckCircle2 size={14} /> Verified
                         </span>
@@ -153,15 +158,45 @@ const Skills = () => {
                       </div>
                     </div>
 
-                    <div className="w-full lg:w-5/12 lg:border-l border-white/5 lg:pl-10">
-                      <p className="text-xs font-bold text-slate-400 mb-6 uppercase tracking-widest">Key Modules</p>
-                      <div className="flex flex-wrap gap-3">
-                        {cert.topics?.map((topic, i) => (
-                          <span key={i} className="px-4 py-2 bg-white/[0.03] hover:bg-primary/10 border border-white/10 hover:border-primary/30 text-slate-300 hover:text-white text-[13px] font-medium rounded-xl transition-all cursor-default flex items-center gap-2 shadow-sm">
-                             <div className="w-1.5 h-1.5 rounded-full bg-primary/60" />
-                             {topic}
-                          </span>
-                        ))}
+                    <div className="w-full lg:w-5/12 lg:border-l border-white/5 lg:pl-10 flex flex-col justify-between">
+                      {cert.badgeImage && (
+                        <div className="mb-6 flex flex-col items-start">
+                          <p className="text-xs font-bold text-slate-400 mb-3 uppercase tracking-widest">Official Badge</p>
+                          <a 
+                            href={cert.link} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="group/badge relative inline-flex items-center gap-4 p-3 pr-5 rounded-2xl bg-white/[0.03] hover:bg-primary/10 border border-white/10 hover:border-primary/40 transition-all duration-300 shadow-xl hover:shadow-primary/20"
+                            title="Click to view & verify Credly badge"
+                          >
+                            <div className="w-20 h-20 rounded-xl bg-slate-950/80 p-1 flex items-center justify-center border border-white/10 shrink-0">
+                              <img 
+                                src={cert.badgeImage} 
+                                alt={`${cert.title} Credly Badge`} 
+                                className="w-full h-full object-contain drop-shadow-[0_0_12px_rgba(14,165,233,0.4)] group-hover/badge:scale-110 group-hover/badge:rotate-3 transition-transform duration-300"
+                              />
+                            </div>
+                            <div className="flex flex-col">
+                              <span className="text-xs font-black text-white group-hover/badge:text-primary transition-colors flex items-center gap-1.5">
+                                Credly Digital Badge
+                                <ExternalLink size={13} />
+                              </span>
+                              <span className="text-[11px] text-slate-400 font-medium mt-0.5">Click to verify credential</span>
+                            </div>
+                          </a>
+                        </div>
+                      )}
+
+                      <div>
+                        <p className="text-xs font-bold text-slate-400 mb-4 uppercase tracking-widest">Key Highlights</p>
+                        <div className="flex flex-wrap gap-2.5">
+                          {cert.topics?.map((topic, i) => (
+                            <span key={i} className="px-3.5 py-1.5 bg-white/[0.03] hover:bg-primary/10 border border-white/10 hover:border-primary/30 text-slate-300 hover:text-white text-xs font-medium rounded-xl transition-all cursor-default flex items-center gap-2 shadow-sm">
+                               <div className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                               {topic}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
