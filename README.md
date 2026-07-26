@@ -40,12 +40,14 @@ I am a dedicated **VAPT Analyst** with a parallel expertise in **Frontend Develo
 
 ## 🎖️ Featured Credentials & Achievements
 
-- **Certified LLM Security Expert (CLLMSE) 🎓** - *Red Team Leaders* (82% Score)
-- **Advanced Penetration Testing** - *Mindluster*
-- **Cloud Computing (Grade A+)** - *IBM SkillsBuild*
-- **Pre Security Specialist** - *TryHackMe*
-- **2nd Position @ IT Utsav 2025** (Excellence in Animated Storytelling)
-- **3rd Position @ IT Utsav 2024** (Technical Innovation)
+- 🛡️ **Ethical Hacker** - *Cisco Networking Academy* (Completed: July 2026) | [Verify Credly Badge](https://www.credly.com/badges/c8a99f3a-05dd-4af5-b5d1-c213671ce881/public_url)
+  - *Key Highlights*: 70 hours of self-paced learning, 34 practical hands-on labs, Ethical Hacking, Vulnerability Assessment, Penetration Testing Fundamentals, Network & Web Security, Threat Analysis.
+- 🎓 **Certified LLM Security Expert (CLLMSE)** - *Red Team Leaders* (82% Score)
+- ☁️ **Cloud Computing (Grade A+)** - *IBM SkillsBuild - Advanced IT Skill Program*
+- ⚔️ **Advanced Penetration Testing** - *Mindluster*
+- 🚩 **Pre Security Specialist** - *TryHackMe*
+- 🏆 **2nd Position @ IT Utsav 2025** (Excellence in Animated Storytelling)
+- 🏆 **3rd Position @ IT Utsav 2024** (Technical Innovation in Avishkar Competition)
 
 ---
 
