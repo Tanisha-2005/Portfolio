@@ -108,10 +108,11 @@ const Skills = () => {
         {/* Featured Certifications */}
         {DATA.certifications.filter(c => c.achievement).length > 0 && (
           <motion.div 
+            id="certifications"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-40 mb-20"
+            className="mt-40 mb-20 scroll-mt-28"
           >
             <h3 className="text-3xl font-bold mb-10 flex items-center gap-4 text-white">
               <Award className="text-primary" size={32} />
