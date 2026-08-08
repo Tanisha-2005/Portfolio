@@ -71,6 +71,12 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "InvestiCore",
+      description: "An enterprise-grade AI Cyber Crime Investigation & Threat Intelligence platform featuring digital forensics evidence vault, IOC graph analysis, and ISO/IEC 27037 compliance.",
+      tags: ["AI", "Forensics", "Threat Intel", "Next.js"],
+      link: "https://github.com/Tanisha-2005/InvestiCore"
+    },
+    {
       title: "Chain Discovery Dashboard",
       description: "A comprehensive SOC & VAPT Operations Portal developed during my Cyart Tech internship for visualizing attack chains and managing vulnerability remediation.",
       tags: ["Cybersecurity", "SOC", "VAPT", "Dashboard"],
@@ -95,22 +101,10 @@ export const DATA = {
       link: "https://github.com/Tanisha-2005/SmartDoc"
     },
     {
-      title: "Network Vulnerability Scanner",
-      description: "A custom security tool built on Nmap for scanning networks, detecting open ports, and identifying running services to highlight security gaps.",
-      tags: ["Nmap", "Network Security", "Vulnerability Research"],
-      link: "https://github.com/Tanisha-2005/Network_Vulnerability_Scanner"
-    },
-    {
       title: "Sorter-Pro",
       description: "An intelligent file management system that uses AI to organize messy directories while ensuring data security and integrity.",
       tags: ["AI", "File Security", "Automation"],
       link: "https://github.com/Tanisha-2005/Sorter-Pro"
-    },
-    {
-      title: "Kingsukh Premium Design",
-      description: "A professional landing page for Kingsukh Guesthouse, focusing on minimalist design principles and high-performance frontend execution.",
-      tags: ["Frontend", "Design", "CSS"],
-      link: "https://github.com/Tanisha-2005/Kingsukh-Guesthouse--website-design"
     }
   ],
   skills: {
@@ -196,5 +190,33 @@ export const DATA = {
       school: "Angel Academy Sr. Sec. School, Alwar, Rajasthan",
       period: "2020 – 2021"
     }
+  ],
+  volunteering: [
+    {
+      title: "Future Crime Summit 2026",
+      role: "Event Volunteer & Operations Support",
+      organization: "Future Crime Summit",
+      location: "Bharat Mandapam, New Delhi",
+      period: "6–7 August 2026",
+      category: "National Cybersecurity Summit",
+      summary: "Volunteered at Future Crime Summit 2026, supporting event operations across the Registration Desk and Innovation Hall while coordinating with technical teams.",
+      contributions: [
+        {
+          title: "Innovation Hall Operations",
+          description: "Managed Innovation Hall operations and assisted with session coordination and speaker stage workflows."
+        },
+        {
+          title: "Registration & Operations Support",
+          description: "Supported the registration desk and executed on-ground event management responsibilities."
+        },
+        {
+          title: "Forensics & Security Exposure",
+          description: "Gained exposure to Threat Intelligence, Digital Forensics, Cyber Crisis Response, Mobile Forensics, and AI-powered SOC Operations."
+        }
+      ],
+      image: "/events/future-crime-summit-2026.jpg",
+      imageCaption: "Volunteering & Organizing Team at Future Crime Summit 2026, Bharat Mandapam, New Delhi"
+    }
   ]
 };
+
