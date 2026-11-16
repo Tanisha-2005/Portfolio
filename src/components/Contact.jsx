@@ -1,0 +1,241 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Mail, Send, GraduationCap, ArrowRight, CheckCircle2, User, FileDown } from 'lucide-react';
+import { DATA } from '../data';
+
+const Contact = () => {
+  const [status, setStatus] = useState('');
+  const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
+
+  const validateEmail = (emailVal) => {
+    const trimmed = (emailVal || '').trim();
+    // HTML5 standard email regex
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    return emailRegex.test(trimmed);
+  };
+
+  const checkDomainMX = async (emailVal) => {
+    const domain = (emailVal || '').trim().split('@')[1];
+    if (!domain) return false;
+    try {
+      const response = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(domain)}&type=MX`);
+      const data = await response.json();
+      // If status is 3 (NXDOMAIN), the domain doesn't exist
+      if (data.Status === 3) return false;
+      // Fail-safe: if status is 0, consider domain active
+      return data.Status === 0;
+    } catch (e) {
+      // Fail open if public DNS query fails to ensure users can still submit
+      return true;
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+    if (value && !validateEmail(value)) {
+      setEmailError('Please enter a valid email address.');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const handleEmailBlur = (e) => {
+    const trimmed = e.target.value.trim();
+    setEmail(trimmed);
+    if (trimmed && !validateEmail(trimmed)) {
+      setEmailError('Please enter a valid email address.');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    const emailVal = (data.get('email') || '').toString();
+
+    if (!validateEmail(emailVal)) {
+      setEmailError('Please enter a valid email address.');
+      return;
+    }
+
+    setStatus('checking');
+    const domainIsValid = await checkDomainMX(emailVal);
+    if (!domainIsValid) {
+      setEmailError('This email domain does not exist or cannot receive emails.');
+      setStatus('');
+      return;
+    }
+    
+    // Set the trimmed email to the form data
+    data.set('email', emailVal.trim());
+    
+    setStatus('sending');
+    
+    try {
+      const response = await fetch(`https://formspree.io/f/mjgjepwa`, {
+        method: 'POST',
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        setStatus('success');
+        form.reset();
+        setEmail('');
+        setEmailError('');
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
+  };
+
+  return (
+    <section id="contact" className="py-32 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
+          
+          <div>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-8">
+              Let's <span className="text-primary italic">Talk</span> Strategy
+            </h2>
+            <p className="text-xl text-slate-500 font-light leading-relaxed mb-12">
+              Whether you're looking for a cybersecurity consultant, a full-stack developer, or a collaborative partner for your next big idea—I'm just a message away.
+            </p>
+
+            <div className="space-y-6 mb-16">
+              <div className="flex items-center gap-6 p-8 premium-blur border-white/5 rounded-[2rem] group">
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                  <User size={32} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-1">Full Name</p>
+                  <p className="text-xl font-bold text-white">{DATA.personal.name}</p>
+                </div>
+              </div>
+
+              <a href={`mailto:${DATA.personal.email}`} className="flex items-center gap-6 p-8 premium-blur border-white/5 hover:border-primary/30 transition-all rounded-[2rem] group">
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                  <Mail size={32} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-1">Send an Email</p>
+                  <p className="text-xl font-bold text-white group-hover:text-primary transition-colors">{DATA.personal.email}</p>
+                </div>
+              </a>
+
+              <a 
+                href={`${import.meta.env.BASE_URL}${DATA.personal.resume}`} 
+                download="Tanisha_resume.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-6 p-8 premium-blur border-white/5 hover:border-secondary/30 transition-all rounded-[2rem] group"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+                  <FileDown size={32} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-1">Professional Persona</p>
+                  <p className="text-xl font-bold text-white group-hover:text-secondary transition-colors">Download Resume</p>
+                </div>
+              </a>
+            </div>
+
+
+          </div>
+
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="premium-blur p-10 md:p-14 rounded-[3rem] border-white/10 relative"
+          >
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-accent opacity-50" />
+            
+            <h3 className="text-3xl font-black text-white mb-10">Start a Conversation</h3>
+            
+            {status === 'success' ? (
+              <motion.div 
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="py-20 text-center space-y-6"
+              >
+                <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto">
+                  <CheckCircle2 size={48} />
+                </div>
+                <h4 className="text-2xl font-bold text-white">Message Transmitted!</h4>
+                <p className="text-slate-500">I'll review your inquiry and get back to you shortly.</p>
+                <button 
+                  onClick={() => {
+                    setStatus('');
+                    setEmail('');
+                    setEmailError('');
+                  }}
+                  className="text-primary font-bold hover:underline"
+                >
+                  Send another message
+                </button>
+              </motion.div>
+            ) : (
+              <form className="space-y-8" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Identity</label>
+                    <input name="name" required type="text" placeholder="Your Name" className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700" />
+                  </div>
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Reach Out At</label>
+                    <input 
+                      name="email" 
+                      required 
+                      type="email" 
+                      value={email}
+                      onChange={handleEmailChange}
+                      onBlur={handleEmailBlur}
+                      placeholder="Email Address" 
+                      className={`w-full bg-white/5 border ${emailError ? 'border-red-500/50 focus:border-red-500' : 'border-white/5 focus:border-primary/50'} rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700`} 
+                    />
+                    {emailError && (
+                      <span className="text-xs text-red-400 mt-1 block pl-2 font-medium">{emailError}</span>
+                    )}
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Objective</label>
+                  <input name="subject" required type="text" placeholder="How can we collaborate?" className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all placeholder:text-slate-700" />
+                </div>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Details</label>
+                  <textarea name="message" required rows="4" placeholder="Tell me about your project..." className="w-full bg-white/5 border border-white/5 focus:border-primary/50 rounded-2xl py-4 px-6 text-white outline-none transition-all resize-none placeholder:text-slate-700"></textarea>
+                </div>
+                <button 
+                  type="submit"
+                  disabled={status === 'sending' || status === 'checking'}
+                  className="group w-full py-5 bg-white text-slate-950 font-black rounded-2xl hover:bg-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-xl overflow-hidden relative"
+                >
+                  <span className="relative z-10 flex items-center gap-3">
+                    {status === 'checking' ? 'Verifying email...' : status === 'sending' ? 'Transmitting...' : 'Transmit Message'}
+                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </button>
+                {status === 'error' && (
+                  <p className="text-red-400 text-sm text-center font-medium">Something went wrong. Please try again.</p>
+                )}
+              </form>
+            )}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
